@@ -1,0 +1,70 @@
+name: 'GoSaveTool Text & Subtitles'
+description: 'Offline word and character counts, social media limits, slugs, case changes, and SRT/WebVTT subtitle conversion, shifting and repair.'
+author: 'GoSaveTool'
+
+branding:
+  icon: 'type'
+  color: 'blue'
+
+inputs:
+  command:
+    description: 'What to do: stats, limits, slug, case, clean, convert-subtitles, shift-subtitles or repair-subtitles.'
+    required: true
+  text:
+    description: 'Text to work on. Use this or "file".'
+    required: false
+    default: ''
+  file:
+    description: 'Path of a file to read instead of "text" (relative to the workspace).'
+    required: false
+    default: ''
+  output-file:
+    description: 'Write the result to this path as well (for case, clean, slug and the subtitle commands).'
+    required: false
+    default: ''
+  to:
+    description: 'For case: upper, lower, title, sentence, camel, snake or kebab. For convert-subtitles: srt or vtt.'
+    required: false
+    default: ''
+  limits:
+    description: 'For limits: comma-separated names to check (x-post, instagram-caption, tiktok-caption, youtube-title, youtube-description, linkedin-post, pinterest-description, seo-title, meta-description). Empty checks all.'
+    required: false
+    default: ''
+  fail-on-exceed:
+    description: 'For limits: fail the step when the text is over any checked limit.'
+    required: false
+    default: 'false'
+  shift-ms:
+    description: 'For shift-subtitles: milliseconds to move every cue (negative is earlier).'
+    required: false
+    default: '0'
+  min-duration:
+    description: 'For repair-subtitles: duration in milliseconds given to cues whose end is not after their start.'
+    required: false
+    default: '2000'
+  summary:
+    description: 'Add a short report to the job summary.'
+    required: false
+    default: 'true'
+
+outputs:
+  result:
+    description: 'Main result: the converted text or subtitles, the slug, or the JSON report for stats and limits.'
+  json:
+    description: 'Full result as JSON.'
+  words:
+    description: 'stats: number of words.'
+  chars:
+    description: 'stats and limits: number of characters.'
+  read-seconds:
+    description: 'stats: reading time in seconds.'
+  fits:
+    description: 'limits: "true" when the text fits every checked limit.'
+  cues:
+    description: 'Subtitle commands: number of cues in the result.'
+  fixed:
+    description: 'repair-subtitles: number of changes made.'
+
+runs:
+  using: 'node24'
+  main: 'index.js'

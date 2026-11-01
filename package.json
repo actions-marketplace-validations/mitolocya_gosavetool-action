@@ -1,0 +1,12 @@
+{
+  "name": "gosavetool-action",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GitHub Action: offline text stats, character limits, slugs, case changes and SRT/WebVTT subtitle tools.",
+  "main": "index.js",
+  "scripts": { "test": "node test/run.js" },
+  "homepage": "https://www.gosavetool.com/",
+  "repository": { "type": "git", "url": "git+https://github.com/mitolocya/gosavetool-action.git" },
+  "author": "GoSaveTool (https://www.gosavetool.com/)",
+  "license": "MIT"
+}

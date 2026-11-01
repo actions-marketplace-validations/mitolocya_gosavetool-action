@@ -1,0 +1,22 @@
+name: test
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: node test/run.js
+      - id: stats
+        uses: ./
+        with:
+          command: stats
+          text: 'Hello world. This is a test!'
+      - run: test "${{ steps.stats.outputs.words }}" = "6"
+      - id: vtt
+        uses: ./
+        with:
+          command: convert-subtitles
+          file: test/fixtures/sample.srt
+          to: vtt
+          output-file: out/sample.vtt
+      - run: head -3 out/sample.vtt
