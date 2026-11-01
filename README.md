@@ -87,6 +87,10 @@ The same tools work in the browser, no sign-up:
 
 The code comes from the [GoSaveTool open source tools](https://github.com/mitolocya/gosavetool) (`@gosavetool/text` and `@gosavetool/subtitles`).
 
+## Feedback
+
+Found a bug or want a new command? [Open an issue](https://github.com/mitolocya/gosavetool-action/issues) or try the tools at [gosavetool.com](https://www.gosavetool.com/).
+
 ## License
 
 MIT
